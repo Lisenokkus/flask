@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURS_BASE_1</title>
+    <link href="{{url_for('static', filename='css/kurs.css')}}" rel='stylesheet'>
+</head>
+
+<body class = 'fon'>
+    <div class = 'knopki1'>
+        <div class="res">
+        <p class='verh'>КУРСпоБД</p>
+    </div>
+        <a href="http://127.0.0.1:5000/profil"><p class='but1'>Вернуться на главную</p></a>
+        </div>
+    
+    <div class="page">
+
+        <div class="temsss">
+            <p class="tema">Модуль 3</p>
+          
+            <button class='temaAlot' onclick='test(1)'>1.INNER JOIN</button>
+            <ul><li> <button class='temaAlot' onclick='test(1)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(2)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(3)'>2.LEFT JOIN, RIGHT JOIN, FULL JOIN</button>
+            <ul><li> <button class='temaAlot' onclick='test(3)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(4)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(5)'>3.Квантор EXISTS</button>
+            <ul><li> <button class='temaAlot' onclick='test(5)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(6)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(7)'>4.Квантор ALL</button>
+            <ul><li> <button class='temaAlot' onclick='test(7)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(8)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(9)'>5.Квантор ANY</button>
+            <ul><li> <button class='temaAlot' onclick='test(9)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(10)'>Задание</button></li></ul>
+        </div>
+        <div id='page1'>
+            <div class="parttwo">
+            <div class="chto">
+                <p class="chtock">1. Соединение таблиц (метод INNER JOIN) Лекция.</p>
+            </div>
+            <div class="textbig">
+                <p class="textBig">
+                    <b>SQL Join</b> – одна из наиболее часто используемых команд в <b>SQL</b>-синтаксисе. Она используется для поиска информации в базах данных по заранее определенным критериям. В частности, <b>Join</b> отвечает за объединение нескольких групп данных в единый поток информации.
+
+И это действительно необходимо, потому что в 100% случаев контент в реляционных базах данных с поддержкой <b>SQL</b>-синтаксиса делится на множество таблиц, фильтровать данные в которых можно с помощью специальных команд и запросом информации из общего пула таблиц. 
+
+<b>SQL Join</b> помогает настроить фильтр поиска в базе данных, опираясь на взаимосвязи между различными элементами БД и их отличительные черты (теги, ID, наименования и т.п.).
+<br><br>Этот режим объединения результатов поиска в базах данных <b>SQL</b> включается автоматически. Если вы не укажете намеренно тип <b>Join</b>, то сработает именно <b>Inner Join</b>. С помощью него можно указать сразу два критерия (две таблицы) и по ним отсеять контент. 
+
+<br>Достаточно прописать <b>SQL-запрос</b> в духе:
+
+<br><small><b>SELECT</b> * FROM table-1
+<br><b>JOIN</b> table-2 ON table-1.parameter=table-2.parameter
+<br><b>WHERE</b> table-1.parameter IS ‘myData’</small>
+<br>Фактически мы пытаемся выудить данные из первой таблицы и объединить их с данными из второй таблицы, при этом фильтруя только те записи, в которых совпадает значение параметра. В первой таблице оно приравнивается к myData.
+                </p>
+            </div>
+            <div class="nav">
+                <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;" onclick="window.location.href='http://127.0.0.1:5000/base2';">
+                    <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(2)"></div></div></div>
+                <div id='page2'>
+                <div class="parttwo">
+                    <div class="chto">
+                        <p class="chtock">1. Соединение таблиц (метод INNER JOIN). Задание</p>
+                    </div>
+                    <div class="task">
+                        <p class="taskk">Предположим, что у нас существует еще одна таблица authors с полями id, name, birth_date. Примените соединение существующих таблиц через поля authors и books</p>
+                    </div>
+                    <div class="sql-input-container">
+                        <textarea id="sql-input" class="sql-input" placeholder="SELECT _ FROM _ INNER JOIN ..."></textarea>
+                        <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                      </div>
+                      <div class="nav">
+                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(1)">
+                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(3)"></div>
+                    </div></div>
+                    <div id='page3'>
+                        <div class="parttwo">
+                        <div class="chto">
+                            <p class="chtock">2. Соединение таблиц (методы LEFT JOIN, RIGHT JOIN, FULL JOIN) Лекция.</p>
+                        </div>
+                        <div class="textbig">
+                            <p class="textBig">
+                                <b>Соединение LEFT JOIN</b>
+                            <br><b>LEFT JOIN</b> - это операция объединения, которая возвращает все строки из левой таблицы table1 и только соответствующие строки из правой таблицы table2. Если в правой таблице нет соответствующей строки, то возвращается NULL для значений правой таблицы.
+                                
+                            <br><small> <b>SELECT</b> * FROM table1
+                                <br><b>LEFT JOIN</b> table2 ON table1.key_column = table2.key_column;</small>
+                                <br><br> <b>Соединение RIGHT JOIN</b>
+                                <br><b>RIGHT JOIN</b> - это операция объединения, которая возвращает все строки из правой таблицы (table2) и только соответствующие строки из левой таблицы (table1). Если в левой таблице нет соответствующей строки, то возвращается NULL для значений левой таблицы.
+                                
+                        <br> <small><b>SELECT</b> * FROM table1
+                                <br><b>RIGHT JOIN</b> table2 ON table1.key_column = table2.key_column;</small>
+                                <br><br><b>Соединение FULL JOIN</b>
+                                <br><b>FULL JOIN (или FULL OUTER JOIN)</b> - это операция объединения, которая возвращает все строки из обеих таблиц (table1 и table2), даже если нет соответствующих строк в другой таблице. Если в любой из таблиц нет соответствующих строк, то возвращается NULL для значений этой таблицы.
+                                
+                                <br> <small><b>SELECT</b> * FROM table1
+                                <br> <b>FULL JOIN</b> table2 ON table1.key_column = table2.key_column;</small></p>
+                        </div>
+                        <div class="nav">
+                            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(2)">
+                                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(4)"></div></div></div>
+                        <div id='page4'>
+                            <div class="parttwo">
+                                <div class="chto">
+                                    <p class="chtock">2. Соединение таблиц (методы LEFT JOIN, RIGHT JOIN, FULL JOIN). Задание</p>
+                                </div>
+                                <div class="task">
+                                    <p class="taskk">Выведите все названия книг и имена авторов, включая книги, у которых авторы не указаны с использованием одного из JOIN</p>
+                                </div>
+                                <div class="sql-input-container">
+                                    <textarea id="sql-input" class="sql-input" placeholder="SELECT _ FROM _ _ JOIN ..."></textarea>
+                                    <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                    </div>
+                                    <div class="nav">
+                                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(3)">
+                                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(5)"></div>
+                                </div></div>
+                                <div id='page5'>
+                                    <div class="parttwo">
+                                    <div class="chto">
+                                        <p class="chtock">3. Квантор <b>EXISTS</b>. Лекция.</p>
+                                    </div>
+                                    <div class="textbig">
+                                        <p class="textBig">
+                                            <b>EXISTS</b> используется для проверки, возвращает ли подзапрос хотя бы одну строку. Если подзапрос возвращает хотя бы одну строку, условие считается истинным и основной запрос выполняется.
+                                            <br><b>EXISTS</b> полезен, когда нужно проверить наличие записей в другой таблице или связанной подзапросом выборке. 
+                                            <br><small><b>SELECT</b> column_name(s) FROM table_name
+                                            <br><b>WHERE EXISTS</b> (<b>SELECT</b> 1 FROM another_table
+                                                WHERE condition
+                                            );</small></p>
+                                    </div>
+                                    <div class="nav">
+                                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(4)">
+                                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(6)"></div></div></div>
+                                    <div id='page6'>
+                                        <div class="parttwo">
+                                            <div class="chto">
+                                                <p class="chtock">3. Квантор <b>EXISTS</b>. Задание</p>
+                                            </div>
+                                            <div class="task">
+                                                <p class="taskk">Выведите имена авторов, у которых есть хотя бы одна книга в таблице books.</p>
+                                            </div>
+                                            <div class="sql-input-container">
+                                                <textarea id="sql-input" class="sql-input" placeholder="SELECT _ FROM _ WHERE EXISTS"></textarea>
+                                                <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                                </div>
+                                                <div class="nav">
+                                                    <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(5)">
+                                                        <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(7)"></div>
+                                            </div></div>
+                                            <div id='page7'>
+                                                <div class="parttwo">
+                                                <div class="chto">
+                                                    <p class="chtock">4. Квантор <b>ALL</b>. Лекция.</p>
+                                                </div>
+                                                <div class="textbig">
+                                                    <p class="textBig">
+                                                        <b>ALL</b> сравнивает значение с каждым значением, возвращаемым подзапросом. Условие с <b>ALL</b>  считается истинным только тогда, когда сравнение истинно для всех значений из подзапроса.
+                                                        <br><b>ALL</b>  полезен, когда нужно проверить, соответствует ли значение критерию по отношению ко всем строкам из подзапроса.
+                                                        <br><small><b>SELECT</b> column_name(s)
+                                                        FROM table_name
+                                                        <br><b>WHERE</b> column_name operator <b>ALL</b> (
+                                                            <br><b>SELECT</b> column_name
+                                                            FROM another_table
+                                                        <b>WHERE</b> condition
+                                                        );</small></p>
+                                                </div><div class="nav">
+                                                <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(6)">
+                                                    <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(8)"></div>
+                                                    </div></div>
+                                            <div id='page8'>
+                                                <div class="parttwo">
+                                                    <div class="chto">
+                                                        <p class="chtock">4. Квантор <b>ALL</b>. Задание</p>
+                                                    </div>
+                                                    <div class="task">
+                                                        <p class="taskk">
+                                                            Напишите запрос для выбора книги, чья цена больше цены всех книг, выпущенных в 2020 году.
+                                                        </p>
+                                                    </div>
+                                                    <div class="sql-input-container">
+                                                        <textarea id="sql-input" class="sql-input" placeholder="SELECT _ FROM _ WHERE _ > ALL"></textarea>
+                                                        <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                                        </div>
+                                                        <div class="nav">
+                                                            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(7)">
+                                                                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(9)"></div>
+                                                    </div></div>
+                                                    <div id='page9'>
+                                                        <div class="parttwo">
+                                                        <div class="chto">
+                                                        <p class="chtock">5. Квантор ANY. Лекция.</p>
+                                                        </div>
+                                                        <div class="textbig">
+                                                        <p class="textBig">
+                                                            <b>ANY</b> используется для сравнения значения с любым значением из множества значений, возвращаемых подзапросом. Условие с <b>ANY</b> считается истинным, если сравнение истинно хотя бы для одного значения из подзапроса.
+                                                            <br><b>ANY</b> полезен, когда нужно проверить, соответствует ли значение критерию по отношению хотя бы к одной строке из подзапроса.</p>
+                                                        </div>
+                                                        <div class="nav">
+                                                            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(8)">
+                                                                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(10)"></div></div></div>
+                                                        <div id='page10'>
+                                                            <div class="parttwo">
+                                                                <div class="chto">
+                                                                    <p class="chtock">5. Квантор ANY. Задание</p>
+                                                                </div>
+                                                                <div class="task">
+                                                                    <p class="taskk">
+                                                                        Напишите запрос для выбора книги, чья цена меньше цены хотя бы одной книги определенного автора.</p>
+                                                                </div>
+                                                                <div class="sql-input-container">
+                                                                    <textarea id="sql-input" class="sql-input" placeholder="SELECT _ FROM _ WHERE _ operator ANY"></textarea>
+                                                                    <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                                                    </div>
+                                                                    <div class="nav">
+                                                                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(9)">
+                                                                        <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;" onclick="window.location.href='http://127.0.0.1:5000/base4';"></div>
+                                                        </div></div>
+                                                    </div></div>
+        <script>
+            
+            function test(pageNumber) {
+                document.getElementById('page1').style.display = 'none';
+                document.getElementById('page2').style.display = 'none';
+                document.getElementById('page3').style.display = 'none';
+                document.getElementById('page4').style.display = 'none';
+                document.getElementById('page5').style.display = 'none';
+                document.getElementById('page6').style.display = 'none';
+                document.getElementById('page7').style.display = 'none';
+                document.getElementById('page8').style.display = 'none';
+                document.getElementById('page9').style.display = 'none';
+                document.getElementById('page10').style.display = 'none';
+                
+                document.getElementById('page' + pageNumber).style.display = 'block';
+              }
+              </script>
+    </body>
+    </html>

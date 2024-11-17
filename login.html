@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'/>
+        <title>KURSpoBD</title>
+        <link href="{{url_for('static', filename='css/kurs.css')}}" rel='stylesheet'>
+    </head>
+    <body>
+        <div class="log">
+            <form class="sing-up" action="/contact" method="post">
+                <div class="input-field">
+                    <span class="close-btn1" onclick="window.location.href='http://127.0.0.1:5000/';">&times;</span>
+                    <p class="title">Вход</p>
+                </div>
+                <div class="input-field">
+                    <input type="text" name="email" placeholder="Электронная почта" required>
+                </div>
+                <div class="input-field">
+                    <input type="password" name="password" placeholder="Пароль" required>
+                </div>
+                <input type="submit" value="Войти" class="btn">
+                <p class="account-text">Нет аккаунта?
+                    <a href="http://127.0.0.1:5000/reg" id="sing-in-btn" class="slk">Зарегистрироваться</a>
+                </p>
+            </form></body>
+        

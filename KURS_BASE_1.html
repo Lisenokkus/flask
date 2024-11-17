@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURS_BASE_1</title>
+    <link href="{{url_for('static', filename='css/kurs.css')}}" rel='stylesheet'>
+</head>
+
+<body class = 'fon'>
+    <div class = 'knopki1'>
+        <div class="res">
+        <p class='verh'>КУРСпоБД</p>
+    </div>
+        <a href="http://127.0.0.1:5000/profil"><p class='but1'>Вернуться на главную</p></a>
+        </div>
+    
+    <div class="page">
+
+    <div class="temsss">
+        <p class="tema">Модуль 1</p>
+        
+        <button class='temaAlot' onclick='test(1)'>1.Создание таблицы</button>
+            <ul><li> <button class='temaAlot' onclick='test(1)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(2)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(3)'>2.Вставка в таблицу</button>
+            <ul><li> <button class='temaAlot' onclick='test(3)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(4)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(5)'>3.Вывод таблицы</button>
+            <ul><li> <button class='temaAlot' onclick='test(5)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(6)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(7)'>4.Изменение таблицы</button>
+            <ul><li> <button class='temaAlot' onclick='test(7)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(8)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(9)'>5.Удаление таблицы</button>
+            <ul><li> <button class='temaAlot' onclick='test(9)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(10)'>Задание</button></li></ul>
+    </div>
+    <div id='page1'>
+    <div class="parttwo">
+    <div class="chto">
+        <p class="chtock">1. Создание таблицы. Лекция.</p>
+    </div>
+    <div class="textbig">
+        <p class="textBig">
+            Для создания таблицы используется <strong>SQL-запрос</strong>. В нем указывается какая таблица создается, из каких атрибутов(полей) она состоит и какой тип данных имеет каждое поле, при необходимости указывается описание полей (ключевое поле и т.д.). Его структура :
+            <br>1.ключевые слова : <em><b>CREATE TABLE</b></em>
+            <br>2.имя создаваемой таблицы;
+            <br>3.открывающая круглая скобка «(»;
+            <br>4.название поля и его описание, которое включает тип поля и другие необязательные характеристики;
+            <br>5.запятая;
+            <br>6.название поля и его описание;
+            <br>7.закрывающая скобка «)».
+            <br><b>После описания структуры таблицы необходимо выбрать типы данных для каждого поля:</b>
+            <br><b>INT</b> - INTEGER Целое число, могут принимать значения
+            от -2 147 483 648 до 2 147 483 647
+            <br><b>DECIMAL или NUMERIC</b>  - Вещественное число, в скобках указывается максимальная длина числа (включает символы слева и справа от десятичной запятой) и количество знаков после запятой.
+            Можно использовать оба этих типа, они эквивалентны, принимают значения в диапазоне -1038+1 до 1038-1.
+            <br><b>DATE</b> - Дата в формате ГГГГ-ММ-ДД 
+            (2020-07-26 2021-01-03)
+            <br><b>VARCHAR</b> 
+            Строка длиной не более 255 символов,
+            в скобках указывается максимальная
+            длина строки, которая может храниться в поле
+        </p>
+    </div>
+    <div class="nav">
+            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik1" style="width:50px; height:auto;"  onclick="test(2)"></div></div></div>
+        <div id='page2'>
+        <div class="parttwo">
+            <div class="chto">
+                <p class="chtock">1. Создание таблицы. Задание.</p>
+            </div>
+            <div class="task">
+                <p class="taskk">Сформулируйте SQL запрос для создания таблицы 'book', с полями book_id, title(varchar(30)), author(varchar(50)), price(int), amount(int).</p>
+            </div>
+            <div class="sql-input-container">
+                <textarea id="sql-input" class="sql-input" placeholder="CREATE TABLE name ()"></textarea>
+                <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+              </div>
+              <div class="nav">
+                <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(1)">
+                    <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(3)"></div>
+            </div></div>
+        <div id='page3'>
+        <div class="parttwo">
+        <div class="chto">
+            <p class="chtock">2. Вставка записи в таблицу. Лекция.</p>
+        </div>
+        <div class="textbig">
+            <p class="textBig">
+                Для занесения новой записи в таблицу используется SQL запрос, в котором указывается в какую таблицу, в какие поля заносить новые значения. <b>Структура запроса:</b>
+
+                <br>-ключевые слова <b>INSERT INTO </b>(ключевое слово INTO можно пропустить);
+                <br>-имя таблицы, в которую добавляется запись;
+                <br>-открывающая круглая скобка «(»;
+                <br>-список полей через запятую, в которые следует занести новые данные;
+                <br>-закрывающая скобка «)»;
+                <br>-ключевое слово <b>VALUES</b>;
+                <br>-открывающая круглая скобка «(»;
+                <br>-список значений через запятую, которые заносятся в соответствующие поля, при этом текстовые значения заключаются в кавычки, числовые значения записываются без кавычек, в качестве разделителя целой и дробной части используется точка;
+                <br>-закрывающая скобка «)».
+                <br><b>При составлении списка полей и списка значений необходимо учитывать следующее:</b>
+
+                <br>1. количество полей и количество значений в списках должны совпадать;
+
+                <br>2. должно существовать прямое соответствие между позицией одного и того же элемента в обоих списках, поэтому первый элемент списка значений должен относиться к первому столбцу в списке столбцов, второй – ко второму столбцу и т.д.;
+
+                <br>3. при добавлении значений SQL пытает преобразовать их к типу данных поля, например, при занесении строки '1' в числовое поле, вставляемое значение преобразуется к целому числу 1, если же попытаться занести строку 'ab' в числовое поле - возникнет ошибка и строка не будет добавлена;
+
+                <br>4. но желательно, во избежание ошибок, следовать правилу "типы данных элементов в списке значений должны быть совместимы с типами данных соответствующих столбцов таблицы" (целое число можно занести в поле типа DECIMAL, обратная операция приведет к округлению вещественного значения, что может повлиять на корректность данных);
+
+                <br>5. новые значения не рекомендуется добавлять в поля, описанные как PRIMARY KEY AUTO_INCREMENT;
+
+                <br>6. рекомендуется заполнять все поля записи, если же поле пропущено, значение этого поля зависит от установленных по умолчанию значений, если значения не установлены в поле вставляется пустое значение (NULL).
+            </p>
+        </div>
+        <div class="nav">
+            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(2)">
+                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(4)"></div></div></div>
+        <div id='page4'>
+            <div class="parttwo">
+                <div class="chto">
+                    <p class="chtock">2. Вставка записи в таблицу. Задание.</p>
+                </div>
+                <div class="task">
+                    <p class="taskk">Занесите новую строку в таблицу book (текстовые значения (тип VARCHAR) заключать либо в двойные, либо в одинарные кавычки):
+
+                        <br>book_id title author price amount
+                        <br>1 Мастер и Маргарита Булгаков М.А. 670 3</p>
+                </div>
+                <div class="sql-input-container">
+                    <textarea id="sql-input" class="sql-input" placeholder="INSERT INTO _ () VALUES ()"></textarea>
+                    <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                    </div>
+                    <div class="nav">
+                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(3)">
+                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(5)"></div>
+                </div></div>
+    <div id='page5'>
+        <div class="parttwo">
+        <div class="chto">
+            <p class="chtock">3. Вывод содержимого таблицы. Лекция.</p>
+        </div>
+        <div class="textbig">
+            <p class="textBig">
+                <b>SELECT</b> используется для создания выборок из базы данных MySQL.
+
+                <br>С помощью <b>SELECT</b> можно:
+                
+                <br>-выводить данные из одной или нескольких таблиц и колонок.
+                <br>-вывести все данные из таблицы используя оператор   * .
+                <br>-выводить данные с условием, используя команду <b>WHERE</b>.
+                <br>-ограничить количество выводимых записей, используя команду <b>LIMIT</b>.
+                <br>-задать смещение колонок, используя команду <b>OFFSET</b>.
+                <br>Синтаксис запроса вывода данных из таблицы
+                <br><small><b>SELECT</b> column1, column2, ... , columnN FROM table_name;
+                <br><b>SELECT</b> column1, column2, ... , columnN FROM table_name;</small>
+                <br>В запросе мы выбираем из каких колонок (column1, column2, ... ) какой таблицы (table_name) мы хотим получить данные.
+                
+                <br>Если нужно получить данные всех колонок таблицы, то воспользуйтесь оператором   * .
+                
+                <br><small><b>SELECT</b> * FROM table_name;
+                <br><b>SELECT</b> * FROM table_name;</small>    
+            </p>
+        </div><div class="nav">
+        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(4)">
+            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(6)"></div>
+            </div></div>
+    <div id='page6'>
+        <div class="parttwo">
+            <div class="chto">
+                <p class="chtock">3. Вывод содержимого таблицы. Задание</p>
+            </div>
+            <div class="task">
+                <p class="taskk">
+                    Выведите колонку title и author из таблицы book
+                </p>
+            </div>
+            <div class="sql-input-container">
+                <textarea id="sql-input" class="sql-input" placeholder="SELECT _ FROM _"></textarea>
+                <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                </div>
+                <div class="nav">
+                    <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(5)">
+                        <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(7)"></div>
+            </div></div>
+        <div id='page7'>
+        <div class="parttwo">
+        <div class="chto">
+        <p class="chtock">4. Изменение содержимого таблицы. Лекция.</p>
+        </div>
+        <div class="textbig">
+        <p class="textBig">
+            <b>ALTER TABLE</b> — один из самых незаменимых инструментов в работе с базами данных SQL. 
+            <br>Синтаксис оператора <b>ALTER TABLE</b> выглядит следующим образом:  
+            
+                <br><small><b>ALTER TABLE</b> название_таблицы [WITH CHECK | WITH NOCHECK]
+            <br>{ <b>ADD</b> название_столбца тип_данных_столбца [атрибуты_столбца] | - добавляет столбец
+                <br><b>DROP COLUMN</b> название_столбца | - удаляет столбец
+                <br><b>ALTER COLUMN</b> название_столбца тип_данных_столбца [NULL|NOT NULL] | - меняет название столбца
+                <br><b>ADD</b> [CONSTRAINT] определение_ограничения | - добавляет ограничения
+                <br><b>DROP</b> [CONSTRAINT] имя_ограничения} - удаляет ограничения</small>
+        </p>
+        </div>
+        <div class="nav">
+            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(6)">
+                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(8)"></div></div></div>
+        <div id='page8'>
+            <div class="parttwo">
+                <div class="chto">
+                    <p class="chtock">4. Изменение содержимого таблицы. Задание</p>
+                </div>
+                <div class="task">
+                    <p class="taskk">
+                        Добавьте к таблице book столбец "release_date" с типом данных "DATE"
+                    </p>
+                </div>
+                <div class="sql-input-container">
+                    <textarea id="sql-input" class="sql-input" placeholder="SELECT _ FROM _"></textarea>
+                    <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                    </div>
+                    <div class="nav">
+                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(7)">
+                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(9)"></div>
+        </div></div>
+        <div id='page9'>
+            <div class="parttwo">
+            <div class="chto">
+            <p class="chtock">5. Удаление таблицы. Лекция.</p>
+            </div>
+            <div class="textbig">
+            <p class="textBig">
+                SQL оператор <b>DROP TABLE</b> позволяет вам удалить таблицу из базы данных SQL.
+                <br>Синтаксис для оператора <b>DROP TABLE</b> в SQL.
+                <br><small><b>DROP TABLE</b> table_name;</small>
+            </p>
+            </div>
+            <div class="nav">
+                <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(8)">
+                    <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(10)"></div></div></div>
+            <div id='page10'>
+                <div class="parttwo">
+                    <div class="chto">
+                        <p class="chtock">5. Удаление таблицы. Задание</p>
+                    </div>
+                    <div class="task">
+                        <p class="taskk">
+                            Удалите таблицу book
+                        </p>
+                    </div>
+                    <div class="sql-input-container">
+                        <textarea id="sql-input" class="sql-input" placeholder="DROP TABLE _"></textarea>
+                        <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                        </div>
+                        <div class="nav">
+                            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(9)">
+                        
+                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;" onclick="window.location.href='http://127.0.0.1:5000/base2';"></div>
+            </div></div>
+        </div></div>
+        <script>
+            
+            function test(pageNumber) {
+                document.getElementById('page1').style.display = 'none';
+                document.getElementById('page2').style.display = 'none';
+                document.getElementById('page3').style.display = 'none';
+                document.getElementById('page4').style.display = 'none';
+                document.getElementById('page5').style.display = 'none';
+                document.getElementById('page6').style.display = 'none';
+                document.getElementById('page7').style.display = 'none';
+                document.getElementById('page8').style.display = 'none';
+                document.getElementById('page9').style.display = 'none';
+                document.getElementById('page10').style.display = 'none';
+                
+                document.getElementById('page' + pageNumber).style.display = 'block';
+              }
+              </script>
+    </body>
+    </html>

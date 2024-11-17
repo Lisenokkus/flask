@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURS_BASE_1</title>
+    <link href="{{url_for('static', filename='css/kurs.css')}}" rel='stylesheet'>
+</head>
+
+<body class = 'fon'>
+    <div class = 'knopki1'>
+        <div class="res">
+        <p class='verh'>КУРСпоБД</p>
+    </div>
+        <a href="http://127.0.0.1:5000/profil"><p class='but1'>Вернуться на главную</p></a>
+        </div>
+    
+    <div class="page">
+
+        <div class="temsss">
+            <p class="tema">Модуль 2</p>
+          
+            <button class='temaAlot' onclick='test(1)'>1.Сортировка</button>
+            <ul><li> <button class='temaAlot' onclick='test(1)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(2)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(3)'>2.Агрегатные функции</button>
+            <ul><li> <button class='temaAlot' onclick='test(3)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(4)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(5)'>3.Группировка</button>
+            <ul><li> <button class='temaAlot' onclick='test(5)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(6)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(7)'>4.Функция HAVING</button>
+            <ul><li> <button class='temaAlot' onclick='test(7)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(8)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(9)'>5.Условия поиска</button>
+            <ul><li> <button class='temaAlot' onclick='test(9)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(10)'>Задание</button></li></ul>
+        </div>
+    <div id='page1'>
+        <div class="parttwo">
+        <div class="chto">
+            <p class="chtock">1. Сортировка. Лекция.</p>
+        </div>
+        <div class="textbig">
+            <p class="textBig">
+                По умолчанию, команда <b>ORDER BY</b> выполняет сортировку по возрастанию. Чтобы управлять направлением сортировки вручную, после имени столбца указывается ключевое слово <b>ASC</b> (по возрастанию) или <b>DESC</b> (по убыванию). Таким образом, чтобы вывести нашу таблицу в порядке убывания цен, нужно задать запрос так:
+                <br><small><b>SELECT</b> * FROM books <b>ORDER BY</b> price DESC</small>
+                <br>Сортировка по возрастанию цены будет:
+                <br><small><b>SELECT</b> * FROM books <b>ORDER BY</b> price ASC</small>
+            </p>
+        </div>
+        <div class="nav">
+            
+            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;" onclick="window.location.href='http://127.0.0.1:5000/base1';">
+                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik1" style="width:50px; height:auto;"  onclick="test(2)"></div></div></div>
+            <div id='page2'>
+            <div class="parttwo">
+                <div class="chto">
+                    <p class="chtock">1. Сортировка. Задание</p>
+                </div>
+                <div class="task">
+                    <p class="taskk">Сформулируйте SQL запрос для сортировки таблицы по полю author</p>
+                </div>
+                <div class="sql-input-container">
+                    <textarea id="sql-input" class="sql-input" placeholder="SELECT * FROM name ORDER BY name"></textarea>
+                    <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                  </div>
+                  <div class="nav">
+                    <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(1)">
+                        <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(3)"></div>
+                </div></div>
+                <div id='page3'>
+                    <div class="parttwo">
+                    <div class="chto">
+                        <p class="chtock">2. Агрегатная функция <b>Count</b>. Лекция.</p>
+                    </div>
+                    <div class="textbig">
+                        <p class="textBig">
+                            
+<b>Язык SQL</b> — не просто язык запросов, а мощный инструмент, похожий на язык программирования, хотя и очень специфичный. Как и в других языках, здесь есть функции, незаменимые в конкретных задачах: найти сумму или среднее по столбцу, минимум или максимум. Такие функции называются агрегатными.
+
+<br>Чтобы вызвать агрегатную функцию, нужно написать ее имя и затем в круглых скобках передать аргументы — переменные, над которыми будут совершаться действия. В этом уроке мы поближе познакомимся с агрегатными функциями и их аргументами.
+
+<br><b>Функция COUNT</b>
+<br>Ранее в курсе мы научились выбирать все записи из таблицы. Например, мы можем выбрать все записи из таблицы books с помощью такого запроса:
+
+<br><small><b> SELECT</b>  * FROM books;</small>
+<br>Запрос вернет нам много строк, но точное их количество мы не знаем. Чтобы это выяснить, можно использовать функцию <b>COUNT</b> — она возвращает количество записей в выборке.
+
+<br>Ответить на вопрос «А сколько записей содержится в таблице books?» можно с помощью такого запроса:
+
+<br><small><b> SELECT COUNT</b> (*) FROM books;</small></p>
+                    </div>
+                    <div class="nav">
+                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(2)">
+                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(4)"></div></div></div>
+                    <div id='page4'>
+                        <div class="parttwo">
+                            <div class="chto">
+                                <p class="chtock">2. Агрегатная функция <b>Count</b>. Задание</p>
+                            </div>
+                            <div class="task">
+                                <p class="taskk">Напишите запрос на вывод количества книг дороже 300 рублей</p>
+                            </div>
+                            <div class="sql-input-container">
+                                <textarea id="sql-input" class="sql-input" placeholder="SELECT COUNT(*) FROM _ WHERE ..."></textarea>
+                                <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                </div>
+                                <div class="nav">
+                                    <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(3)">
+                                        <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(5)"></div>
+                            </div></div>
+                            <div id='page5'>
+                                <div class="parttwo">
+                                <div class="chto">
+                                    <p class="chtock">3. Группировка. Лекция.</p>
+                                </div>
+                                <div class="textbig">
+                                    <p class="textBig">
+                                        Группировка данных позволяет объединить одинаковые значения в заданных полях в группы, а затем выполнять подсчеты для каждой группы.
+                                        <br>Для группировки данных существует специальный оператор <b>GROUP BY</b>. Запрос с подсчетом книг каждого автора будет выглядеть так:
+                                        
+                                        <br><small><b>SELECT</b> author, <b>COUNT</b>(*)
+                                        <br>FROM books
+                                        <br><b>GROUP BY</b> author
+                                        <br><b>ORDER BY</b> author;</small>
+                                        <br>Мы могли бы создавать по отдельному запросу для каждого писателя, но вместо этого использовали конструкцию <b>GROUP BY author</b>. В ней мы указали, что нам нужно объединить строки с одинаковыми идентификаторами author, вывести идентификатор и количество строк в каждой группе <b>COUNT(*)</b>.
+                                         </p>
+                                </div>
+                                <div class="nav">
+                                    <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(4)">
+                                        <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(6)"></div></div></div>
+                                <div id='page6'>
+                                    <div class="parttwo">
+                                        <div class="chto">
+                                            <p class="chtock">3. Группировка. Задание</p>
+                                        </div>
+                                        <div class="task">
+                                            <p class="taskk">Напишите запрос на вывод количества книг по одинаковой цене</p>
+                                        </div>
+                                        <div class="sql-input-container">
+                                            <textarea id="sql-input" class="sql-input" placeholder="SELECT title, COUNT ..."></textarea>
+                                            <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                            </div>
+                                            <div class="nav">
+                                                <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(5)">
+                                                    <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(7)"></div>
+                                        </div></div>
+                            <div id='page7'>
+                                <div class="parttwo">
+                                <div class="chto">
+                                    <p class="chtock">4. Ключевое слово HAVING. Лекция.</p>
+                                </div>
+                                <div class="textbig">
+                                    <p class="textBig">
+                                        С помощью ключевого слова <b>HAVING</b> мы можем задать условия на строки выборки после группировки данных.
+
+                                        <br>Попробуем найти книги, стоящие менее 500 рублей. Для этого напишем такой запрос:
+                                        
+                                        <br><small><b>SELECT</b> book_id,
+                                         <br><b>SUM</b>(price) FROM books
+                                        <br><b>GROUP BY</b> book_id
+                                        <br><b>HAVING SUM</b>(price) < 500
+                                        <br><b>ORDER BY</b> book_id;</small>
+                                    </p>
+                                </div><div class="nav">
+                                <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(6)">
+                                    <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(8)"></div>
+                                    </div></div>
+                            <div id='page8'>
+                                <div class="parttwo">
+                                    <div class="chto">
+                                        <p class="chtock">4. Ключевое слово HAVING. Задание</p>
+                                    </div>
+                                    <div class="task">
+                                        <p class="taskk">
+                                            Сформулируйте запрос на вывод книги с максимальной стоимостью (вместо SUM используйте MAX)
+                                        </p>
+                                    </div>
+                                    <div class="sql-input-container">
+                                        <textarea id="sql-input" class="sql-input" placeholder="SELECT _ MAX() FROM _"></textarea>
+                                        <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                        </div>
+                                        <div class="nav">
+                                            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(7)">
+                                                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(9)"></div>
+                                    </div></div>
+                                    <div id='page9'>
+                                        <div class="parttwo">
+                                        <div class="chto">
+                                        <p class="chtock">5. Составные условия поиска. Лекция.</p>
+                                        </div>
+                                        <div class="textbig">
+                                        <p class="textBig">
+                                            Воспользуемся сразу несколькими условиями выборки с помощью <b>WHERE</b> и <b>AND</b>, например выведем количество книг по одинаковой стоимости у одного автора. Запрос будет выглядеть таким образом:
+                                            <br><small><b>SELECT</b> book_id, <b>COUNT</b>(*) FROM books 
+                                            <br><b>WHERE</b> author='Булгаков' AND price=500</small>
+                                        </p>
+                                        </div>
+                                        <div class="nav">
+                                            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(8)">
+                                                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(10)"></div></div></div>
+                                        <div id='page10'>
+                                            <div class="parttwo">
+                                                <div class="chto">
+                                                    <p class="chtock">5. Составные условия поиска. Задание</p>
+                                                </div>
+                                                <div class="task">
+                                                    <p class="taskk">
+                                                        Выведите количество книг с одинаковой стоимостью и названием
+                                                    </p>
+                                                </div>
+                                                <div class="sql-input-container">
+                                                    <textarea id="sql-input" class="sql-input" placeholder="SELECT _, COUNT(*)..."></textarea>
+                                                    <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                                    </div>
+                                                    <div class="nav">
+                                                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(9)">
+                                                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto; display:none"  onclick="test(10)">
+                                                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;" onclick="window.location.href='http://127.0.0.1:5000/base3';"></div>
+                                        </div></div>
+                                    </div></div>
+                <script>
+            
+                    function test(pageNumber) {
+                        document.getElementById('page1').style.display = 'none';
+                        document.getElementById('page2').style.display = 'none';
+                        document.getElementById('page3').style.display = 'none';
+                        document.getElementById('page4').style.display = 'none';
+                        document.getElementById('page5').style.display = 'none';
+                        document.getElementById('page6').style.display = 'none';
+                        document.getElementById('page7').style.display = 'none';
+                        document.getElementById('page8').style.display = 'none';
+                        document.getElementById('page9').style.display = 'none';
+                        document.getElementById('page10').style.display = 'none';
+                        
+                        document.getElementById('page' + pageNumber).style.display = 'block';
+                      }
+                      </script>
+            </body>
+            </html>

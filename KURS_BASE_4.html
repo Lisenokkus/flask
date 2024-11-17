@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KURS_BASE_1</title>
+    <link href="{{url_for('static', filename='css/kurs.css')}}" rel='stylesheet'>
+</head>
+
+<body class = 'fon'>
+    <div class = 'knopki1'>
+        <div class="res">
+        <p class='verh'>КУРСпоБД</p>
+    </div>
+        <a href="http://127.0.0.1:5000/profil"><p class='but1'>Вернуться на главную</p></a>
+        </div>
+    
+    <div class="page">
+
+        <div class="temsss">
+            <p class="tema">Модуль 4</p>
+            <button class='temaAlot' onclick='test(1)'>1.Представления</button>
+            <ul><li> <button class='temaAlot' onclick='test(1)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(2)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(3)'>2.Процедуры</button>
+            <ul><li> <button class='temaAlot' onclick='test(3)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(4)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(5)'>3.Триггеры</button>
+            <ul><li> <button class='temaAlot' onclick='test(5)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(6)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(7)'>4.Транзакции</button>
+            <ul><li> <button class='temaAlot' onclick='test(7)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(8)'>Задание</button></li></ul>
+
+            <button class='temaAlot' onclick='test(9)'>5.Курсоры</button>
+            <ul><li> <button class='temaAlot' onclick='test(9)'>Лекция</button></li>
+                <li> <button class='temaAlot' onclick='test(10)'>Задание</button></li></ul>
+        </div>
+        <div id='page1'>
+            <div class="parttwo">
+            <div class="chto">
+                <p class="chtock">1. Представления. Лекция.</p>
+            </div>
+            <div class="textbig">
+                <p class="textBig">
+                    <b>Представление (VIEW)</b> — объект базы данных, являющийся результатом выполнения запроса к базе данных, определенного с помощью оператора <b>SELECT</b>, в момент обращения к представлению.
+                    <br>Для создания представления используется оператор <b>CREATE VIEW</b>, имеющий следующий синтаксис:
+                    <br><small><b>CREATE</b> [OR REPLACE]
+                    
+                    <br>[ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
+                    
+                    <br><b>VIEW</b> view_name [(column_list)]
+                    
+                    <br>AS select_statement
+                    
+                    <br>[WITH [CASCADED | LOCAL] CHECK OPTION]</small>
+                    <br><b>view_name</b> — имя создаваемого представления. 
+                    <br><b>select_statement</b> — оператор <b>SELECT</b>, выбирающий данные из таблиц и/или других представлений, которые будут содержаться в представлении
+                </p>
+            </div>
+            <div class="nav">
+                
+                <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;" onclick="window.location.href='http://127.0.0.1:5000/base3';">
+                    <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(2)"></div></div></div>
+                <div id='page2'>
+                <div class="parttwo">
+                    <div class="chto">
+                        <p class="chtock">1. Представления. Задание.</p>
+                    </div>
+                    <div class="task">
+                        <p class="taskk">Создайте представление, соединяющее данные таблиц books и authors</p>
+                    </div>
+                    <div class="sql-input-container">
+                        <textarea id="sql-input" class="sql-input" placeholder="CREATE VIEW _ AS SELECT ... AS ... FROM _ JOIN ..."></textarea>
+                        <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                      </div>
+                      <div class="nav">
+                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(1)">
+                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(3)"></div>
+                    </div></div>
+                    <div id='page3'>
+                        <div class="parttwo">
+                        <div class="chto">
+                            <p class="chtock">2. Хранимые процедуры. Лекция.</p>
+                        </div>
+                        <div class="textbig">
+                            <p class="textBig">
+                                <b>Хранимая процедура</b> — это предварительно скомпилированный набор операторов <b>SQL</b>, который хранится в базе данных и может быть выполнен одной командой. Хранимые процедуры предназначены для упрощения сложных операций, повышения производительности и усиления безопасности, позволяя администраторам контролировать доступ к важным операциям БД.
+
+<br><b>Вот пример простой хранимой процедуры, которая извлекает данные из базы:</b>
+
+<br><small><b>CREATE PROCEDURE</b> get_customers
+<br>AS
+<br>BEGIN
+<br>    SELECT * FROM customers;
+<br>END</small>
+<br>Эта хранимая процедура извлекает все строки из таблицы “customers” и возвращает их вызывающей стороне. Процедура может быть выполнена одной командой:
+<br><small><b>EXEC</b> get_customers;</small>
+<br><br><b>Преимущества хранимых процедур</b>
+<br>1. Повышенная производительность. Хранимые процедуры компилируются и оптимизируются движком базы данных, что может привести к более быстрому выполнению операции, чем специальные SQL-запросы.
+
+<br>2. Возможность повторного использования. Хранимые процедуры можно вызывать из нескольких приложений и использовать для выполнения сложных операций с базой данных, что сокращает объем кода, который необходимо писать и поддерживать.
+
+<br>3. Безопасность. Хранимые процедуры можно использовать для контроля доступа к конфиденциальным операциям базы данных, ограничивая доступ определенным пользователям или ролям. Это помогает предотвратить несанкционированный доступ.
+
+<br>4. Удобство обслуживания. Хранимые процедуры можно изменять, не затрагивая использующие их приложения. Это облегчает внесение изменений в схему базы данных или логику запросов без разрушения существующих приложений.
+
+<br>5. Согласованность. Хранимые процедуры позволяют обеспечивать согласованность операций с базой данных, инкапсулируя сложную логику и применяя бизнес-правила. Это помогает предотвратить возникновение различных ошибок.</p>
+                        </div>
+                        <div class="nav">
+                            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(2)">
+                                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(4)"></div></div></div>
+                        <div id='page4'>
+                            <div class="parttwo">
+                                <div class="chto">
+                                    <p class="chtock">2. Хранимые процедуры. Задание.</p>
+                                </div>
+                                <div class="task">
+                                    <p class="taskk">Выполните выборку данных из таблицы books и выведите заголовки книг (title) и их цены (price), которые написаны автором с указанным именем.</p>
+                                </div>
+                                <div class="sql-input-container">
+                                    <textarea id="sql-input" class="sql-input" placeholder="CREATE PROCEDURE _"></textarea>
+                                    <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                    </div>
+                                    <div class="nav">
+                                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(3)">
+                                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(5)"></div>
+                                </div></div>
+                                <div id='page5'>
+                                    <div class="parttwo">
+                                    <div class="chto">
+                                        <p class="chtock">3. Триггеры. Лекция.</p>
+                                    </div>
+                                    <div class="textbig">
+                                        <p class="textBig">
+                                            <b>Триггер</b> — это хранимая процедура, которая не вызывается непосредственно, а исполняется при наступлении определенного события ( вставка, удаление, обновление строки ).
+
+<br><b>Синтаксис создания триггера:</b>
+
+<br><small><b>CREATE TRIGGER</b> trigger_name trigger_time trigger_event
+ON tbl_name FOR EACH ROW trigger_stmt</small>
+
+<br><b>trigger_name</b> — название триггера
+<br><b>trigger_time</b> — Время срабатывания триггера. BEFORE — перед событием. AFTER — после события.
+<br><b>trigger_event</b> — Событие:
+<br><b>insert</b> — событие возбуждается операторами insert, data load, replace
+<br><b>update</b> — событие возбуждается оператором update
+<br><b>delete</b> — событие возбуждается операторами delete, replace. Операторы DROP TABLE и TRUNCATE не активируют выполнение триггера
+<br><b>tbl_name</b> — название таблицы
+<br><b>trigger_stmt</b> - выражение, которое выполняется при активации триггера</p>
+                                    </div>
+                                    <div class="nav">
+                                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(4)">
+                                            <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(6)"></div></div></div>
+                                    <div id='page6'>
+                                        <div class="parttwo">
+                                            <div class="chto">
+                                                <p class="chtock">3. Триггеры. Задание.</p>
+                                            </div>
+                                            <div class="task">
+                                                <p class="taskk">Создайте триггер, который проверяет, что цена книги не отрицательная при добавлении новой записи в таблицу books.</p>
+                                            </div>
+                                            <div class="sql-input-container">
+                                                <textarea id="sql-input" class="sql-input" placeholder="CREATE TRIGGER _"></textarea>
+                                                <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                                </div>
+                                                <div class="nav">
+                                                    <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(5)">
+                                                        <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(7)"></div>
+                                            </div></div>
+                                            <div id='page7'>
+                                                <div class="parttwo">
+                                                <div class="chto">
+                                                    <p class="chtock">4. Транзакции. Лекция.</p>
+                                                </div>
+                                                <div class="textbig">
+                                                    <p class="textBig">
+                                                        <b>Транзакция</b> — это последовательность одного или нескольких операторов, которые рассматриваются как единое целое. Цель транзакции — обеспечить полное или частичное завершение серии операций с базой данных, даже в случае ошибок, сбоев или других прерываний.
+
+<br>Транзакции важны для управления БД, поскольку они обеспечивают целостность и непротиворечивость данных. Объединяя связанные операции в транзакции, база данных может гарантировать, что либо все операции будут завершены успешно, либо ни одна из них. 
+<br><b>Пример транзакции SQL</b>
+<br><small><b>BEGIN TRANSACTION;</b>
+
+<br><b>UPDATE</b> accounts SET balance = balance - 100 WHERE account_id = 123;
+<br><b>UPDATE</b> accounts SET balance = balance + 100 WHERE account_id = 456;
+
+<br><b>COMMIT TRANSACTION;</b></small>
+<br>В этой транзакции выполняются два оператора для перевода 100 единиц валюты со счета 123 на счет 456. Оператор <b>BEGIN TRANSACTION</b> начинает транзакцию, а оператор <b>COMMIT TRANSACTION</b> завершает её. Если во время транзакции произойдет ошибка, например сбой питания или нарушение ограничений, то база данных автоматически откатит транзакцию и отменит все внесенные изменения.
+
+<br>Транзакции важны для управления БД, поскольку они обеспечивают целостность и непротиворечивость данных. Без транзакций было бы трудно обеспечить правильное и последовательное выполнение операций, особенно в средах, где к базе данных могут одновременно обращаться несколько пользователей.
+
+</p>
+                                                </div><div class="nav">
+                                                <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(6)">
+                                                    <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(8)"></div>
+                                                    </div></div>
+                                            <div id='page8'>
+                                                <div class="parttwo">
+                                                    <div class="chto">
+                                                        <p class="chtock">4. Транзакции. Задание.</p>
+                                                    </div>
+                                                    <div class="task">
+                                                        <p class="taskk">
+                                                            Уменьшите количество книг на складе и создайте заказ. Транзакция не работает, если количество книг становится отрицательным.
+                                                        </p>
+                                                    </div>
+                                                    <div class="sql-input-container">
+                                                        <textarea id="sql-input" class="sql-input" placeholder="START TRANSACTION; UPDATE booksSET stock = stock - 1WHERE id = 1; ..."></textarea>
+                                                        <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                                        </div>
+                                                        <div class="nav">
+                                                            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(7)">
+                                                                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(9)"></div>
+                                                    </div></div>
+                                                    <div id='page9'>
+                                                        <div class="parttwo">
+                                                        <div class="chto">
+                                                        <p class="chtock">5. Курсоры. Лекция.</p>
+                                                        </div>
+                                                        <div class="textbig">
+                                                        <p class="textBig">
+                                                            <b>Курсор в SQL</b> — это объект базы данных, который хранится во временной памяти и используется для чтения и манипулирования одной строкой данных за раз.
+
+<br>Курсор использует инструкцию <b>SQL SELECT</b> для извлечения набора строк из базы данных, а затем может читать и манипулировать одной строкой за раз.
+
+<br><b>В SQL существуют два типа курсоров:</b>
+
+<br><b>Неявный курсор.</b> Система генерирует и использует этот тип курсоров для управления запросом <b>DML</b> (вставка, обновление и удаление).
+
+<br><b>Явный курсор.<br></b> Этот тип курсора создаётся пользователем с помощью команды <b>SELECT</b>. Явный курсор содержит более одной строки, но одновременно может обрабатываться только одна строка.</p>
+                                                        </div>
+                                                        <div class="nav">
+                                                            <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(8)">
+                                                                <img src="{{ url_for('static', filename='images/strel.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(10)"></div></div></div>
+                                                        <div id='page10'>
+                                                            <div class="parttwo">
+                                                                <div class="chto">
+                                                                    <p class="chtock">5. Курсоры. Задание.</p>
+                                                                </div>
+                                                                <div class="task">
+                                                                    <p class="taskk">Объединете таблицы authors и books и выведите имя автора и название книги</p>
+                                                                </div>
+                                                                <div class="sql-input-container">
+                                                                    <textarea id="sql-input" class="sql-input" placeholder="CREATE PROCEDURE _"></textarea>
+                                                                    <button class="submit-btn" onclick="submitSQL()">Проверить</button>
+                                                                    </div>
+                                                                    <div class="nav">
+                                                                        <img src="{{ url_for('static', filename='images/strel1.png') }}" class="imagik" style="width:50px; height:auto;"  onclick="test(9)"></div>
+                                                        </div></div>
+                                                    </div></div>
+      
+        <script>
+            
+            function test(pageNumber) {
+                document.getElementById('page1').style.display = 'none';
+                document.getElementById('page2').style.display = 'none';
+                document.getElementById('page3').style.display = 'none';
+                document.getElementById('page4').style.display = 'none';
+                document.getElementById('page5').style.display = 'none';
+                document.getElementById('page6').style.display = 'none';
+                document.getElementById('page7').style.display = 'none';
+                document.getElementById('page8').style.display = 'none';
+                document.getElementById('page9').style.display = 'none';
+                document.getElementById('page10').style.display = 'none';
+                
+                document.getElementById('page' + pageNumber).style.display = 'block';
+              }
+              </script>
+    </body>
+    </html>
